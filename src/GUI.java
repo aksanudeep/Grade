@@ -10,15 +10,17 @@ import java.util.Scanner;
 import javax.sound.midi.Soundbank;
 import javax.swing.*;
 
-class ButtonFrame extends JFrame
-{
-    ButtonFrame(String title)
+class GUI
+
     {
-        super( title );                     // invoke the JFrame constructor
-        setLayout( new FlowLayout() );      // set the layout manager
+        public static void main(String[] args) {
+        JFrame frame=new JFrame("Grade caluclator tool for SAU");
+        frame.setLayout(new FlowLayout());
+        frame.setVisible(true);
+        frame.setSize(400 ,400);
         JButton button = new JButton("Click Me For your grades!"); // construct a JButton
-        add( button );                     // add the button to the JFrame
-        setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
+        frame.add( button );                     // add the button to the JFrame
+        frame.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
     button.addActionListener(new ActionListener() {
 
             @Override
@@ -35,6 +37,8 @@ class ButtonFrame extends JFrame
                 List<String> gradeList = new ArrayList<String>();
                 List<String> res = new ArrayList<>();
 
+
+              //
                 try {
 
                     while (sc.hasNextLine())
@@ -64,7 +68,11 @@ class ButtonFrame extends JFrame
                                     System.out.println(studentName+" - "+calculatedGrade);
                                     res.add("Grade"+calculatedGrade);
                                     JTextArea text = new JTextArea(studentName+" - "+calculatedGrade);
-                                    add(text);
+                                    frame.add(text);
+                                    text.setVisible(true);
+                                    SwingUtilities.updateComponentTreeUI(frame);
+
+
                                 }
 
                                 else
@@ -112,27 +120,10 @@ class ButtonFrame extends JFrame
 
 
 
-        //this.setVisible(false);
-        //JFrame frame= new JFrame();
-        //JTextArea tarea=new JTextArea();
-      //  frame.setVisible(true);
-      // frame.setSize(400,400);
-
-
-
 
     }
 }
 
-public class GUI
-{
 
-    public static void main ( String[] args )
-    {
-        ButtonFrame frm = new ButtonFrame("Button Demo");
-        frm.setSize( 400, 400 );
-        frm.setVisible( true );
 
-    }
-}
 
